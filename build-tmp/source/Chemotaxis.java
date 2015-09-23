@@ -1,8 +1,24 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Chemotaxis extends PApplet {
+
 //Helen Zhang, Block 1, Chemotaxis
 //declare bacteria variables here
 Bacteria [] bob = new Bacteria[20];
 Player me;
-void setup(){
+public void setup(){
 	//initialize bacteria variables here
 	for(int i=0;i<bob.length;i++){
 		bob[i]= new Bacteria();
@@ -13,7 +29,7 @@ void setup(){
 	background(136,165,158);
 	frameRate(120);
 }
-void draw(){
+public void draw(){
 	//move and show the bacteria;
 	fill(136,165,158,10);
 	rect(0,0,410,410);
@@ -38,11 +54,11 @@ class Bacteria {
 		b=(int)(Math.random()*200);
 		g=(int)(Math.random()*200);
 	}
-	void show(){
+	public void show(){
 		fill(r,g,b,80);
 		ellipse(myX,myY,bacSize,bacSize);
 	}
-	void move(){
+	public void move(){
 		if(dir==0){
 			//move up
 			int bias;
@@ -113,7 +129,7 @@ class Bacteria {
 			}
 		}
 	}
-	void resetDir(){
+	public void resetDir(){
 		//reset the direction
 		dir = (int)(Math.random()*4);
 		isMoving=false;
@@ -133,11 +149,11 @@ class Player {
 		b=0;
 		g=0;
 	}
-	void show(){
+	public void show(){
 		fill(r,g,b);
 		ellipse(myX,myY,bacSize,bacSize);
 	}
-	void move(){
+	public void move(){
 		if(dir==0){
 			//move up
 			if(isMoving==false){
@@ -184,7 +200,7 @@ class Player {
 			}
 		}
 	}
-	void chooseDir(){
+	public void chooseDir(){
 		if(key=='w'){
 			dir=0;
 		}else if (key=='s'){
@@ -196,4 +212,13 @@ class Player {
 		}
 		isMoving=false;
 	}
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Chemotaxis" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
