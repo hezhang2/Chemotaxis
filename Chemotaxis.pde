@@ -8,15 +8,15 @@ void setup(){
 		bob[i]= new Bacteria();
 	}
 	me = new Player();
-	size(410,410);
+	size(610,610);
 	noStroke();
 	background(136,165,158);
-	frameRate(120);
+	frameRate(800);
 }
 void draw(){
 	//move and show the bacteria;
 	fill(136,165,158,10);
-	rect(0,0,410,410);
+	rect(0,0,610,610);
 	for(int i=0;i<bob.length;i++){
 		bob[i].show();
 		bob[i].move();
@@ -195,5 +195,11 @@ class Player {
 			dir=3;
 		}
 		isMoving=false;
+	}
+	int x(){
+		return myX;
+	}
+	int y(){
+		return myY;
 	}
 }
