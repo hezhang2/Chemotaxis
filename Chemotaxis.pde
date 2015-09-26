@@ -13,7 +13,6 @@ void setup(){
 	size(610,610);
 	noStroke();
 	background(136,165,158);
-	frameRate(800);
 }
 void draw(){
 	//move and show the bacteria;
@@ -68,7 +67,7 @@ class Bacteria {
 				isMoving=true;
 			}
 			if(myY>newY){
-				myY--;
+				myY-=2;
 			}else{
 				resetDir();
 			}
@@ -85,7 +84,7 @@ class Bacteria {
 				isMoving=true;
 			}
 			if(myY<newY){
-				myY++;
+				myY+=2;
 			}else if(myY==newY){
 				resetDir();
 			}
@@ -102,7 +101,7 @@ class Bacteria {
 				isMoving=true;
 			}
 			if(myX>newX){
-				myX--;
+				myX-=2;
 			}else if(myX==newX){
 				resetDir();
 			}
@@ -119,7 +118,7 @@ class Bacteria {
 				isMoving=true;
 			}
 			if(myX<newX){
-				myX++;
+				myX+=2;
 			}else if(myX==newX){
 				resetDir();
 			}
