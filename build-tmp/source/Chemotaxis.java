@@ -18,6 +18,8 @@ public class Chemotaxis extends PApplet {
 //declare bacteria variables here
 Bacteria [] bob = new Bacteria[20];
 Player me;
+boolean turn=true;
+int attrX, attrY;
 public void setup(){
 	//initialize bacteria variables here
 	for(int i=0;i<bob.length;i++){
@@ -40,6 +42,9 @@ public void draw(){
 	me.show();
 	me.move();
 }
+public void mousePressed(){
+	turn=!turn;
+}
 class Bacteria {
 	int myX, myY, bacSize;
 	int r,g,b,t;
@@ -59,10 +64,17 @@ class Bacteria {
 		ellipse(myX,myY,bacSize,bacSize);
 	}
 	public void move(){
+		if (turn==true){
+			attrX=me.x();
+			attrY=me.y();
+		}else{
+			attrX=mouseX;
+			attrY=mouseY;
+		}
 		if(dir==0){
 			//move up
 			int bias;
-			if(myY>mouseY){
+			if(myY>attrY){
 				bias=4;
 			}else{
 				bias=2;
@@ -79,7 +91,7 @@ class Bacteria {
 		}else if(dir==1){
 			//move down
 			int bias;
-			if(myY<mouseY){
+			if(myY<attrY){
 				bias=4;
 			}else{
 				bias=2;
@@ -96,7 +108,7 @@ class Bacteria {
 		}else if(dir==2){
 			//move left
 			int bias;
-			if(myX>mouseX){
+			if(myX>attrX){
 				bias=4;
 			}else{
 				bias=2;
@@ -113,7 +125,7 @@ class Bacteria {
 		}else{
 			//move right
 			int bias;
-			if(myX<mouseX){
+			if(myX<attrX){
 				bias=4;
 			}else{
 				bias=2;
